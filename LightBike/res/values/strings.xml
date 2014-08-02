@@ -22,5 +22,9 @@
     <string name="menu_stop">Stop</string>
     <string name="action_settings">Action settings</string>
     
+     <string name="menu_settings">Settings</string>
+    
+    <string name="scan_text">put the scanner</string>
+    
 
 </resources>

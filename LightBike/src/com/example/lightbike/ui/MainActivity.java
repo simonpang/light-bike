@@ -1,6 +1,10 @@
 package com.example.lightbike.ui;
 
+import java.io.File;
+
+import android.net.Uri;
 import android.os.Bundle;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.example.lightbike.R;
 import com.example.lightbike.ble.BlunoLibrary;
+import com.example.lightbike.qr_codescan.QRCodeActivity;
 
 public class MainActivity  extends BlunoLibrary {
 	private Button buttonScan;
@@ -19,35 +24,40 @@ public class MainActivity  extends BlunoLibrary {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-        onCreateProcess();														//onCreate Process by BlunoLibrary
-        
-        serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
+		Intent intent = new Intent();
+		intent.setClass(MainActivity.this, QRCodeActivity.class);
 		
-        serialReceivedText=(TextView) findViewById(R.id.serialReveicedText);	//initial the EditText of the received data
-        serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
-        
-        buttonSerialSend = (Button) findViewById(R.id.buttonSerialSend);		//initial the button for sending the data
-        buttonSerialSend.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				serialSend(serialSendText.getText().toString());				//send the data to the BLUNO
-			}
-		});
-        
-        buttonScan = (Button) findViewById(R.id.buttonScan);					//initial the button for scanning the BLE device
-        buttonScan.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
-			}
-		});
+		finish();
+//		setContentView(R.layout.activity_main);
+//        onCreateProcess();														//onCreate Process by BlunoLibrary
+//        
+//        serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
+//		
+//        shareToTimeLine(null);
+//        serialReceivedText=(TextView) findViewById(R.id.serialReveicedText);	//initial the EditText of the received data
+//        serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
+//        
+//        buttonSerialSend = (Button) findViewById(R.id.buttonSerialSend);		//initial the button for sending the data
+//        buttonSerialSend.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//
+//				serialSend(serialSendText.getText().toString());				//send the data to the BLUNO
+//			}
+//		});
+//        
+//        buttonScan = (Button) findViewById(R.id.buttonScan);					//initial the button for scanning the BLE device
+//        buttonScan.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//
+//				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
+//			}
+//		});
 	}
 
 	protected void onResume(){
@@ -56,6 +66,15 @@ public class MainActivity  extends BlunoLibrary {
 		onResumeProcess();														//onResume Process by BlunoLibrary
 	}
 	
+	private void shareToTimeLine(File file) {  
+        Intent intent = new Intent();  
+        ComponentName componentName = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI");  
+        intent.setComponent(componentName);  
+        intent.setAction(Intent.ACTION_SEND);  
+        intent.setType("image/*");  
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));  
+        startActivity(intent);  
+    } 
 	
 	
 	@Override
