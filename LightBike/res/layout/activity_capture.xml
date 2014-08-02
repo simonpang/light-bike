@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/black"
+    android:background="@color/qrcode_view"
     android:orientation="vertical" >
 	<LinearLayout 
 	    android:layout_width="fill_parent"
@@ -32,20 +32,21 @@
 	</LinearLayout>
     
 
-    <TextView
+    <ImageView
         android:id="@+id/scaner"
-        android:textSize="50dp"
+        android:src="@drawable/label_scan_1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="scan" />
+         />
 
-    <TextView
+    <ImageView
         android:id="@+id/bike"
+        android:layout_marginTop="@dimen/qrcode_margin"
+        android:src="@drawable/label_scan_2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
         android:gravity="center_horizontal"
-        android:text="near bike" />
+         />
 
 </LinearLayout>
