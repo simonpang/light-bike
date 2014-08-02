@@ -30,8 +30,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.lightbike.R;
 import com.example.lightbike.ble.BluetoothLeService;
+import com.example.lightbike.ui.BaseActivity;
 
-public abstract  class BlunoLibrary  extends Activity {
+public abstract  class BlunoLibrary  extends BaseActivity {
 
 	private Context mainContext=this;
 
