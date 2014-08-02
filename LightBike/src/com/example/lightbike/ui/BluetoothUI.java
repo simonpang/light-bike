@@ -32,7 +32,6 @@ public class BluetoothUI  extends BlunoLibrary {
         
         serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
 		
-        shareToTimeLine(null);
         serialReceivedText=(TextView) findViewById(R.id.serialReveicedText);	//initial the EditText of the received data
         serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
         
@@ -64,16 +63,6 @@ public class BluetoothUI  extends BlunoLibrary {
 		System.out.println("BlUNOActivity onResume");
 		onResumeProcess();														//onResume Process by BlunoLibrary
 	}
-	
-	private void shareToTimeLine(File file) {  
-        Intent intent = new Intent();  
-        ComponentName componentName = new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI");  
-        intent.setComponent(componentName);  
-        intent.setAction(Intent.ACTION_SEND);  
-        intent.setType("image/*");  
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));  
-        startActivity(intent);  
-    } 
 	
 	
 	@Override

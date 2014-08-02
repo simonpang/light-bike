@@ -1,9 +1,14 @@
 package com.example.lightbike.ui;
 
+import java.io.File;
+
 import com.example.lightbike.R;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -61,6 +66,7 @@ public class MainActivity  extends BaseActivity{
 		
 
 	}
+	
 
 	protected void onResume(){
 		super.onResume();
