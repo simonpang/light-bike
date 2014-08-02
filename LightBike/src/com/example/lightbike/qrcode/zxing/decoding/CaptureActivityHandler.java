@@ -100,6 +100,8 @@ public final class CaptureActivityHandler extends Handler {
       case R.id.return_scan_result:
         Log.d(TAG, "Got return scan result message");
 //        activity.setResult(Activity.RESULT_OK, (Intent) message.obj);
+        if (activity.isFinishing())
+        	return;
         activity.finish();
         Intent intent1 = new Intent();
         intent1.setClass(activity, QRCodeUI.class);

@@ -26,6 +26,7 @@ import com.example.lightbike.qrcode.zxing.decoding.CaptureActivityHandler;
 import com.example.lightbike.qrcode.zxing.decoding.InactivityTimer;
 import com.example.lightbike.qrcode.zxing.view.ViewfinderView;
 import com.example.lightbike.ui.BaseActivity;
+import com.example.lightbike.ui.QRCodeUI;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -47,7 +48,7 @@ public class MipcaActivityCapture extends BaseActivity implements Callback {
 	private boolean vibrate;
 	
 	//add when time more than seconds, go to result
-	private static final int MAX_TIME = 10 * 1000;
+	private static final int MAX_TIME = 5 * 1000;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -67,7 +68,10 @@ public class MipcaActivityCapture extends BaseActivity implements Callback {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			MipcaActivityCapture.this.finish();
+			finish();
+			Intent intent1 = new Intent();
+	        intent1.setClass(MipcaActivityCapture.this, QRCodeUI.class);
+	        startActivity(intent1);
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);

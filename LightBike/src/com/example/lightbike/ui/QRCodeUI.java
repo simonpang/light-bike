@@ -1,25 +1,18 @@
 package com.example.lightbike.ui;
 
 
-import com.example.lightbike.R;
-import com.example.lightbike.qrcode.MipcaActivityCapture;
-
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ImageButton;
+
+import com.example.lightbike.R;
 
 public class QRCodeUI extends Activity {
 	private final static int SCANNIN_GREQUEST_CODE = 1;
 	
-	private TextView mTextView ;
-
-	private ImageView mImageView;
 	
 
 	@Override
@@ -27,19 +20,16 @@ public class QRCodeUI extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qrcode_main);
 		
-		mTextView = (TextView) findViewById(R.id.result); 
-		mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
 		
-		
-		Button mButton = (Button) findViewById(R.id.button1);
+		ImageButton mButton = (ImageButton) findViewById(R.id.button);
 		mButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(QRCodeUI.this, MipcaActivityCapture.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
+//				Intent intent = new Intent();
+//				intent.setClass(QRCodeUI.this, MipcaActivityCapture.class);
+//				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//				startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			}
 		});
 	}

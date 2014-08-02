@@ -13,22 +13,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
-        android:background="#0000ff"
+        android:background="@drawable/background_card_top"
         android:orientation="horizontal" >
         
         <FrameLayout
-    	    android:layout_width="100dp"
-	        android:layout_height="100dp"
-            >
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center" >
 
-	        <TextView
-	            android:layout_width="50dp"
-	            android:layout_height="50dp"
+	        <ImageView
+	            android:layout_width="70dp"
+	            android:layout_height="70dp"
 	            android:layout_gravity="center"
-	            android:background="#ff0000"
-	            android:text="Bicycle Icon" />
+	            android:src="@drawable/button_bike_blue" />
 
         </FrameLayout>
         
@@ -45,23 +44,34 @@
 	  	        android:layout_width="wrap_content"
 	  	        android:layout_height="wrap_content"
 	  	        android:layout_gravity="center"
-	  	        android:background="#0000ee"
 	  	        android:orientation="vertical" >
 		        
 			    <TextView
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
+			        android:layout_marginBottom="5dp"
 			        android:text="辆自行车在附近"
 			        android:textColor="#fff"
-			        android:textSize="25sp" />
+			        android:textSize="20sp" />
 			
 			    <TextView
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
+			        android:drawableLeft="@drawable/circle_yellow"
+			        android:drawablePadding="5dp"
 			        android:text="附近500m 范围"
-			        android:textColor="#fff" />
+			        android:textColor="#fff"
+			        android:textSize="15sp" />
 		    
 		   	</LinearLayout>
+
+ 	     <ImageView
+ 	         android:layout_width="20dp"
+ 	         android:layout_height="20dp"
+ 	         android:layout_gravity="center"
+ 	         android:layout_weight="1"
+ 	         android:src="@drawable/icon_disclose" />
+	  	    		   	
     </LinearLayout>
         
 
@@ -70,7 +80,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#0000ee"
         android:orientation="horizontal" >
 
 	    <Button
@@ -78,14 +87,26 @@
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
-	        android:text="显示地图" />
+	        android:background="@drawable/background_card_bottom_left"
+	        android:drawableLeft="@drawable/icon_map"
+	        android:drawablePadding="10dp"
+	        android:gravity="center"
+	        android:paddingLeft="30dp"
+	        android:paddingRight="10dp"
+	        android:text="显示地图"
+	        android:textColor="#fff" />
 	    
 	    <Button
 	        android:id="@+id/scanQRButton"
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
-	        android:text="扫QR码" />
+	        android:background="@drawable/background_card_bottom_right"
+	        android:drawableLeft="@drawable/icon_qrscan"
+	        android:paddingLeft="30dp"
+	        android:paddingRight="10dp"
+	        android:text="扫QR码"
+	        android:textColor="#fff" />
         
     </LinearLayout>
     
