@@ -3,6 +3,7 @@ package com.example.lightbike.ui;
 import java.io.File;
 
 import com.example.lightbike.R;
+import com.example.lightbike.qrcode.MipcaActivityCapture;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -55,16 +56,11 @@ public class MainActivity  extends BaseActivity{
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, QRCodeUI.class);
+				intent.setClass(MainActivity.this, MipcaActivityCapture.class);
 				startActivity(intent);
 			}
 		});
 		
-
-		
-		
-		
-
 	}
 	
 

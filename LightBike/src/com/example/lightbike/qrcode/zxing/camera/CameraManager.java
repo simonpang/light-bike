@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
+import com.example.lightbike.R;
 
 /**
  * This object wraps the Camera service object and expects to be the only one talking to it. The
@@ -42,7 +43,7 @@ public final class CameraManager {
   private static final int MIN_FRAME_HEIGHT = 240;
   private static final int MAX_FRAME_WIDTH = 480;
   private static final int MAX_FRAME_HEIGHT = 360;
-
+  private static float density;
   private static CameraManager cameraManager;
 
   static final int SDK_INT; // Later we can use Build.VERSION.SDK_INT
@@ -107,6 +108,8 @@ public final class CameraManager {
 
     previewCallback = new PreviewCallback(configManager, useOneShotPreviewCallback);
     autoFocusCallback = new AutoFocusCallback();
+    
+    density = context.getResources().getDisplayMetrics().density;
   }
 
   /**
@@ -221,20 +224,39 @@ public final class CameraManager {
       if (camera == null) {
         return null;
       }
-      int width = screenResolution.x * 3 / 4;
-      if (width < MIN_FRAME_WIDTH) {
-        width = MIN_FRAME_WIDTH;
-      } else if (width > MAX_FRAME_WIDTH) {
-        width = MAX_FRAME_WIDTH;
-      }
-      int height = screenResolution.y * 3 / 4;
-      if (height < MIN_FRAME_HEIGHT) {
-        height = MIN_FRAME_HEIGHT;
-      } else if (height > MAX_FRAME_HEIGHT) {
-        height = MAX_FRAME_HEIGHT;
-      }
-      int leftOffset = (screenResolution.x - width) / 2;
-      int topOffset = (screenResolution.y - height) / 2;
+//      int width = screenResolution.x * 3 / 4;
+//      if (width < MIN_FRAME_WIDTH) {
+//        width = MIN_FRAME_WIDTH;
+//      } else if (width > MAX_FRAME_WIDTH) {
+//        width = MAX_FRAME_WIDTH;
+//      }
+//      int height = screenResolution.y * 3 / 4;
+//      if (height < MIN_FRAME_HEIGHT) {
+//        height = MIN_FRAME_HEIGHT;
+//      } else if (height > MAX_FRAME_HEIGHT) {
+//        height = MAX_FRAME_HEIGHT;
+//      }
+      int margin =  context.getResources().getDimensionPixelSize(R.dimen.qrcode_margin);
+      Log.d(TAG, "Calculated margin: " + margin);
+      int width = screenResolution.x - 2 * margin;
+      Log.d(TAG, "Calculated width: " + width);
+      int height = context.getResources().getDimensionPixelSize(R.dimen.qrcode_height);;
+      Log.d(TAG, "Calculated height: " + height);
+//      if (width < MIN_FRAME_WIDTH) {
+//         width = MIN_FRAME_WIDTH;
+//      } else if (width > MAX_FRAME_WIDTH) {
+//        width = MAX_FRAME_WIDTH;
+//      }
+//      
+//      if (height < MIN_FRAME_HEIGHT) {
+//        height = MIN_FRAME_HEIGHT;
+//      } else if (height > MAX_FRAME_HEIGHT) {
+//        height = MAX_FRAME_HEIGHT;
+//      }
+    	  
+//      int leftOffset = (screenResolution.x - width) / 2;
+      int leftOffset = 0;
+      int topOffset = 0;
       framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);
       Log.d(TAG, "Calculated framing rect: " + framingRect);
     }

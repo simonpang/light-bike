@@ -1,29 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+        android:layout_height="@dimen/qrcode_height"
+        android:orientation="vertical" 
+        android:layout_marginTop="@dimen/qrcode_margin"
+        android:layout_marginLeft="@dimen/qrcode_margin"   
+        android:layout_marginRight="@dimen/qrcode_margin"   
+        android:layout_marginBottom="@dimen/qrcode_margin"      
+         > 
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        >
+		    <SurfaceView
+		        android:id="@+id/preview_view"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		         />
+	
+	   		 <com.example.lightbike.qrcode.zxing.view.ViewfinderView
+		        android:id="@+id/viewfinder_view"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		         />
+	    </RelativeLayout>
+	</LinearLayout>
+    
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/scaner"
+        android:textSize="50dp"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="scan" />
 
-        <SurfaceView
-            android:id="@+id/preview_view"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/bike"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:gravity="center_horizontal"
+        android:text="near bike" />
 
-        <com.example.lightbike.qrcode.zxing.view.ViewfinderView
-            android:id="@+id/viewfinder_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <include
-            android:id="@+id/include1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            layout="@layout/activity_title" />
-    </RelativeLayout>
-
-</FrameLayout>
+</LinearLayout>

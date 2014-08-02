@@ -3,7 +3,6 @@ package com.example.lightbike.qrcode;
 import java.io.IOException;
 import java.util.Vector;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -13,12 +12,12 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lightbike.R;
@@ -26,6 +25,7 @@ import com.example.lightbike.qrcode.zxing.camera.CameraManager;
 import com.example.lightbike.qrcode.zxing.decoding.CaptureActivityHandler;
 import com.example.lightbike.qrcode.zxing.decoding.InactivityTimer;
 import com.example.lightbike.qrcode.zxing.view.ViewfinderView;
+import com.example.lightbike.ui.BaseActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -33,7 +33,7 @@ import com.google.zxing.Result;
  * Initial the camera
  * @author Ryan.Tang
  */
-public class MipcaActivityCapture extends Activity implements Callback {
+public class MipcaActivityCapture extends BaseActivity implements Callback {
 
 	private CaptureActivityHandler handler;
 	private ViewfinderView viewfinderView;
@@ -45,6 +45,9 @@ public class MipcaActivityCapture extends Activity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
+	
+	//add when time more than seconds, go to result
+	private static final int MAX_TIME = 10 * 1000;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -55,17 +58,19 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
 		
-		Button mButtonBack = (Button) findViewById(R.id.button_back);
-		mButtonBack.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				MipcaActivityCapture.this.finish();
-				
-			}
-		});
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
+		
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+			MipcaActivityCapture.this.finish();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	@Override
@@ -141,6 +146,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		if (handler == null) {
 			handler = new CaptureActivityHandler(this, decodeFormats,
 					characterSet);
+			handler.sendEmptyMessageDelayed(R.id.return_scan_result, MAX_TIME);
 		}
 	}
 
@@ -222,5 +228,24 @@ public class MipcaActivityCapture extends Activity implements Callback {
 			mediaPlayer.seekTo(0);
 		}
 	};
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.screen_scan, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.scanner_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 }

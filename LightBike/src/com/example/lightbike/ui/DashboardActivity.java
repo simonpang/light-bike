@@ -4,6 +4,7 @@ import com.example.lightbike.R;
 import com.example.lightbike.R.id;
 import com.example.lightbike.R.layout;
 import com.example.lightbike.R.menu;
+import com.example.lightbike.qrcode.MipcaActivityCapture;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -38,7 +39,7 @@ public class DashboardActivity extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(DashboardActivity.this, QRCodeUI.class);
+				Intent intent = new Intent(DashboardActivity.this, MipcaActivityCapture.class);
 				startActivity(intent);
 			}
 		});

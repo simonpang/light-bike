@@ -45,20 +45,19 @@ public class QRCodeUI extends Activity {
 	}
 	
 	
-	@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-		case SCANNIN_GREQUEST_CODE:
-			if(resultCode == RESULT_OK){
-				Bundle bundle = data.getExtras();
-				//��ʾɨ�赽������
-				mTextView.setText(bundle.getString("result"));
-				//��ʾ
-				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
-			}
-			break;
-		}
-    }	
+//	@Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//		case SCANNIN_GREQUEST_CODE:
+//			if(resultCode == RESULT_OK){
+////				Bundle bundle = data.getExtras();
+////				mTextView.setText(bundle.getString("result"));
+////				//��ʾ
+////				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
+//			}
+//			break;
+//		}
+//    }	
 
 }
