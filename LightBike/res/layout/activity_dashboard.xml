@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    tools:context="com.example.lightbike.ui.DashboardActivity" >
+    
+    <!-- Row 1 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="#0000ff"
+        android:orientation="horizontal" >
+        
+        <FrameLayout
+    	    android:layout_width="100dp"
+	        android:layout_height="100dp"
+            >
+
+	        <TextView
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:layout_gravity="center"
+	            android:background="#ff0000"
+	            android:text="Bicycle Icon" />
+
+        </FrameLayout>
+        
+	   	<TextView
+	   	    android:layout_width="wrap_content"
+	   	    android:layout_height="wrap_content"
+	   	    android:layout_gravity="center"
+	   	    android:layout_marginRight="10dp"
+	   	    android:text="3"
+	   	    android:textColor="#fff"
+	   	    android:textSize="50sp" />
+	   	
+	  	    <LinearLayout
+	  	        android:layout_width="wrap_content"
+	  	        android:layout_height="wrap_content"
+	  	        android:layout_gravity="center"
+	  	        android:background="#0000ee"
+	  	        android:orientation="vertical" >
+		        
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="辆自行车在附近"
+			        android:textColor="#fff"
+			        android:textSize="25sp" />
+			
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="附近500m 范围"
+			        android:textColor="#fff" />
+		    
+		   	</LinearLayout>
+    </LinearLayout>
+        
+
+    <!-- Row 2 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#0000ee"
+        android:orientation="horizontal" >
+
+	    <Button
+	        android:id="@+id/viewMapButton"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="显示地图" />
+	    
+	    <Button
+	        android:id="@+id/scanQRButton"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="扫QR码" />
+        
+    </LinearLayout>
+
+</LinearLayout>
