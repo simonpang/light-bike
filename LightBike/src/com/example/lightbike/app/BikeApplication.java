@@ -1,4 +1,4 @@
-package com.example.lightbike;
+package com.example.lightbike.app;
 
 import android.app.Application;
 import com.baidu.mapapi.SDKInitializer;

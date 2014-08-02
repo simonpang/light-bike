@@ -1,4 +1,4 @@
-package com.example.lightbike;
+package com.example.lightbike.ui;
 
 import android.os.Bundle;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.example.lightbike.R;
+import com.example.lightbike.ble.BlunoLibrary;
 
 public class MainActivity  extends BlunoLibrary {
 	private Button buttonScan;

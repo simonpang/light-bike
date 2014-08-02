@@ -1,4 +1,4 @@
-package com.example.lightbike;
+package com.example.lightbike.ble;
 
 @SuppressWarnings("unchecked")
 public class RingBuffer<T> {

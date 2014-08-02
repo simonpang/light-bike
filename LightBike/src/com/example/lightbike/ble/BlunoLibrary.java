@@ -1,4 +1,4 @@
-package com.example.lightbike;
+package com.example.lightbike.ble;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.lightbike.R;
+import com.example.lightbike.ble.BluetoothLeService;
 
 public abstract  class BlunoLibrary  extends Activity {
 
@@ -195,10 +197,7 @@ public abstract  class BlunoLibrary  extends Activity {
 				((Activity) mainContext).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 			}
 		}
-		
-		
 	    mainContext.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
-
 	}
     
 
@@ -338,7 +337,7 @@ public abstract  class BlunoLibrary  extends Activity {
         }
     };
 	
-    void buttonScanOnClickProcess()
+    public void buttonScanOnClickProcess()
     {
     	switch (mConnectionState) {
 		case isNull:
