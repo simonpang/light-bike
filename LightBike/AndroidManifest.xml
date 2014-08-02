@@ -30,7 +30,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="eK8iT4MXCU2WPrCfOmxfQ3H0" />
+            android:value="irIQQPoEstBH2LT8ahTzZCsP" />
         
         <activity
             android:name="com.example.lightbike.ui.MainActivity"
