@@ -31,7 +31,7 @@ public class LocationUI extends BaseActivity {
 	public MyLocationListenner myListener = new MyLocationListenner();
 	private LocationMode mCurrentMode;
 	BitmapDescriptor mCurrentMarker;
-    private static final float DEFAULT_ZOOM_LEVEL = 15.0f;
+    private static final float DEFAULT_ZOOM_LEVEL = 17.0f;
 	MapView mMapView;
 	BaiduMap mBaiduMap;
 	// UI相关
