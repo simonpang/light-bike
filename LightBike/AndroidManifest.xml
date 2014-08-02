@@ -33,13 +33,13 @@
             android:value="eK8iT4MXCU2WPrCfOmxfQ3H0" />
         
         <activity
-            android:name="com.example.blunobasicdemo.MainActivity"
+            android:name="com.example.lightbike.ui.MainActivity"
             android:label="@string/app_name" >
-            
-            
+
+
         </activity>
         <activity
-            android:name=".LocationDemo"
+            android:name=".ui.LocationUI"
             android:configChanges="orientation|keyboardHidden"
             android:label="地图"
             android:screenOrientation="sensor" >
@@ -52,7 +52,7 @@
             
         </activity>
 
-        <service android:name=".BluetoothLeService" android:enabled="true"/>
+        <service android:name=".ble.BluetoothLeService" android:enabled="true"/>
 
         <service
             android:name="com.baidu.location.f"
@@ -61,7 +61,7 @@
         </service>
         
         <activity
-            android:name=".MipcaActivityCapture"
+            android:name=".qr_codescan.MipcaActivityCapture"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
