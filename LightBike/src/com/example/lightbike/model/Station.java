@@ -5,16 +5,16 @@ package com.example.lightbike.model;
  */
 public class Station {
     public final long id;
-    public final long latitude;
-    public final long langitude;
+    public final double latitude;
+    public final double longitude;
     public String name;
     public int bikeNum;
     public String locationDesc;
 
-    public Station(long id, long latitude, long langitude, String name, int bikeNum, String desc) {
+    public Station(long id, double latitude, double longitude, String name, int bikeNum, String desc) {
         this.id = id;
         this.latitude = latitude;
-        this.langitude = langitude;
+        this.longitude = longitude;
 
         this.name = name;
         this.bikeNum = bikeNum;
