@@ -24,14 +24,37 @@ public class DashboardActivity extends Activity {
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
 		Button scanQRButton = (Button) findViewById(R.id.scanQRButton);
 		
+		viewMapButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(DashboardActivity.this, LocationUI.class);
+				startActivity(intent);
+			}
+		});
+		
 		scanQRButton.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+				Intent intent = new Intent(DashboardActivity.this, QRCodeUI.class);
 				startActivity(intent);
 			}
 		});
+		
+		Button btnBluetooth = (Button) findViewById(R.id.btn_bluetooth);
+		
+		btnBluetooth.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(DashboardActivity.this, BluetoothUI.class);
+				startActivity(intent);
+			}
+		});
+
 	}
 
 	@Override
