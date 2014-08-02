@@ -21,8 +21,8 @@ import com.baidu.mapapi.model.LatLng;
  */
 public class Bike {
     public long id;
-    public long latitude;
-    public long langitude;
+    public double latitude;
+    public double longitude;
     public String name;
     public String password;
     public int status;
@@ -32,10 +32,10 @@ public class Bike {
         public static final int STOLEN = 2;
     }
 
-    public Bike(long id, long latitude, long langitude, String name , String password, int status) {
+    public Bike(long id, double latitude, double longitude, String name , String password, int status) {
         this.id = id;
         this.latitude = latitude;
-        this.langitude = langitude;
+        this.longitude = longitude;
         this.name = name;
         this.password = password;
         this.status = STATUS.LOCK;
