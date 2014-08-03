@@ -67,7 +67,7 @@ public class DashboardActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (qrFlag) {
-            scanQRButton.setText("连接单车");
+            scanQRButton.setText("单车控制");
         }
     }
 
