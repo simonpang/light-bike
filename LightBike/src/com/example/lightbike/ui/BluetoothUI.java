@@ -40,18 +40,19 @@ public class BluetoothUI  extends BlunoLibrary {
             }
         });
         statusText = (TextView) findViewById(R.id.tv_status);
-        statusText.post(new Runnable() {
-            @Override
-            public void run() {
-                buttonScanOnClickProcess();                                        //Alert Dialog for selecting the BLE device
-            }
-        });
+
     }
 
 	protected void onResume(){
 		super.onResume();
 		System.out.println("BlUNOActivity onResume");
-		onResumeProcess();														//onResume Process by BlunoLibrary
+		onResumeProcess();
+        statusText.post(new Runnable() {
+            @Override
+            public void run() {
+                buttonScanOnClickProcess();
+            }
+        });
 	}
 	
 	

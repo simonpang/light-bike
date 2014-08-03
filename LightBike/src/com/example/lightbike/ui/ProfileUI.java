@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import com.example.lightbike.R;
 
 public class ProfileUI extends BaseActivity{
-	private static boolean mHasTouch = false;
+	private boolean mHasTouch = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,10 +20,10 @@ public class ProfileUI extends BaseActivity{
 		if (mHasTouch) {
 			return super.onTouchEvent(event);
 		}
-		finish();
 		Intent intent = new Intent();
 		intent.setClass(ProfileUI.this, DashboardActivity.class);
 		startActivity(intent);
+		finish();
 		mHasTouch = true;
 		return super.onTouchEvent(event);
 	}
