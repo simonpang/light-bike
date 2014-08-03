@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+	
+    
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="fill_parent"
@@ -18,5 +19,14 @@
         android:layout_marginRight="25dp"
         android:layout_marginTop="10dip"
         android:visibility="invisible"/>
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:src="@drawable/map_search_box"
+    	android:layout_marginTop="10dp"
+    	android:layout_centerHorizontal="true"
+        
+     />
 
 </RelativeLayout>

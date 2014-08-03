@@ -23,6 +23,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:background="@drawable/button_green"
-        android:src="@drawable/button_unlock_text" />
+        android:src="@drawable/label_login" />
 
 </RelativeLayout>
