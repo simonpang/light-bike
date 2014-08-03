@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.lightbike.R;
 import com.example.lightbike.ble.BlunoLibrary;
@@ -12,18 +13,18 @@ import com.example.lightbike.ble.BlunoLibrary;
 public class BluetoothUI  extends BlunoLibrary {
 	private TextView statusText;
 	private Button lockBtn;
-    private Button unlockBtn;
+    private ImageButton unlockBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.bluetooth_main);
+		setContentView(R.layout.qrcode_main);
         onCreateProcess();														//onCreate Process by BlunoLibrary
         
         serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
 		
-        lockBtn = (Button) findViewById(R.id.lock_btn);
+        lockBtn = (Button) findViewById(R.id.lock_button);
         lockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +32,7 @@ public class BluetoothUI  extends BlunoLibrary {
             }
         });
 
-        unlockBtn = (Button) findViewById(R.id.unlock_btn);
+        unlockBtn = (ImageButton) findViewById(R.id.unlock_button);
         unlockBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

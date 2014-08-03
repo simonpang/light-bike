@@ -32,6 +32,7 @@ import com.example.lightbike.R;
 import com.example.lightbike.qrcode.MipcaActivityCapture;
 import com.example.lightbike.qrcode.zxing.camera.CameraManager;
 import com.example.lightbike.qrcode.zxing.view.ViewfinderResultPointCallback;
+import com.example.lightbike.ui.BluetoothUI;
 import com.example.lightbike.ui.QRCodeUI;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -104,7 +105,7 @@ public final class CaptureActivityHandler extends Handler {
         	return;
         activity.finish();
         Intent intent1 = new Intent();
-        intent1.setClass(activity, QRCodeUI.class);
+        intent1.setClass(activity, BluetoothUI.class);
         activity.startActivity(intent1);
         break;
       case R.id.launch_product_query:
