@@ -1,5 +1,6 @@
 package com.example.lightbike.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ import java.util.List;
 public class LocationUI extends BaseActivity {
 
     private static final String TAG = "LocationUI";
-    
+    public static final int RESULT_OK_CODE = 1;
 	// 定位相关
     private InfoWindow mInfoWindow;
 	LocationClient mLocClient;
@@ -178,7 +179,7 @@ public class LocationUI extends BaseActivity {
 //                mBaiduMap.showInfoWindow(mInfoWindow);
                 Intent intent = new Intent();
                 intent.setClass(LocationUI.this, StationUI.class);
-                startActivity(intent);
+                startActivityForResult(intent, 100);
                 return true;
             }
         };
@@ -233,5 +234,16 @@ public class LocationUI extends BaseActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if (requestCode == 100) {
+				if(resultCode == Activity.RESULT_OK){
+					finish();
+				}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }
