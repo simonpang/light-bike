@@ -24,6 +24,7 @@ public class LoginUI extends BaseActivity{
 				Intent intent = new Intent();
 				intent.setClass(LoginUI.this, ProfileUI.class);
 				startActivity(intent);
+				finish();
 			}
 		});
 	}
