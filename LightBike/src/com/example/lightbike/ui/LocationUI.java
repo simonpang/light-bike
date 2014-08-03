@@ -201,10 +201,14 @@ public class LocationUI extends BaseActivity {
         List<Station> stationList = MockServer.mockStations(ll);
         //定义Maker坐标点
         for (Station station : stationList) {
+        	
+        	int random = (int) station.id % 3;
+        	int pinImages[] = { R.drawable.map_pin_0, R.drawable.map_pin_4, R.drawable.map_pin_8};
+        	
             LatLng point = new LatLng(station.latitude, station.longitude);
             //构建Marker图标
             BitmapDescriptor bitmap = BitmapDescriptorFactory
-                    .fromResource(R.drawable.icon_gcoding);
+                    .fromResource(pinImages[random]);
             //构建MarkerOption，用于在地图上添加Marker
             OverlayOptions option = new MarkerOptions()
                     .position(point)
