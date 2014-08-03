@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import com.example.lightbike.R;
+import com.example.lightbike.app.BikeApplication;
 import com.example.lightbike.ble.BlunoLibrary;
 
 import java.util.logging.Handler;
@@ -13,15 +14,12 @@ import java.util.logging.Handler;
 /**
  * Created by sim on 8/3/14.
  */
-public class StolenUI extends BlunoLibrary {
+public class StolenUI extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stolen);
-        onCreateProcess();														//onCreate Process by BlunoLibrary
-
-        serialBegin(115200);
 
         ImageView freeBtn = (ImageView) findViewById(R.id.button);
         freeBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,46 +45,31 @@ public class StolenUI extends BlunoLibrary {
     protected void onResume(){
         super.onResume();
         System.out.println("BlUNOActivity onResume");
-        onResumeProcess();
-        buttonScanOnClickProcess();
+        ((BikeApplication)getApplication()).tryConnect();
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        onActivityResultProcess(requestCode, resultCode, data);					//onActivityResult Process by BlunoLibrary
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        onPauseProcess();
         finish();
     }
 
     protected void onStop() {
         super.onStop();
-        onStopProcess();														//onStop Process by BlunoLibrary
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        onDestroyProcess();														//onDestroy Process by BlunoLibrary
-    }
-
-    @Override
-    public void onConectionStateChange(connectionStateEnum theconnectionStateEnum) {
-
-    }
-
-    @Override
-    public void onSerialReceived(String theString) {
-
     }
 
     public void setFree() {
-        serialSend("F");
+        ((BikeApplication)getApplication()).sendCommand("F");
     }
 }

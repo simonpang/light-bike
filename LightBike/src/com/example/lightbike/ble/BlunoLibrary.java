@@ -3,6 +3,7 @@ package com.example.lightbike.ble;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Application;
 import android.os.Handler;
 import android.os.IBinder;
 import android.annotation.SuppressLint;
@@ -32,16 +33,10 @@ import com.example.lightbike.R;
 import com.example.lightbike.ble.BluetoothLeService;
 import com.example.lightbike.ui.BaseActivity;
 
-public abstract  class BlunoLibrary  extends BaseActivity {
+public abstract class BlunoLibrary  extends Application {
 
-	private Context mainContext=this;
+	private Context mainContext;
 
-	
-//	public BlunoLibrary(Context theContext) {
-//		
-//		mainContext=theContext;
-//	}
-	
 	public abstract void onConectionStateChange(connectionStateEnum theconnectionStateEnum);
 	public abstract void onSerialReceived(String theString);
 	public void serialSend(String theString){
@@ -50,7 +45,10 @@ public abstract  class BlunoLibrary  extends BaseActivity {
 			mBluetoothLeService.writeCharacteristic(mSCharacteristic);
 		}
 	}
-	
+
+    public void setContext(Context context) {
+        mainContext = context;
+    }
 	private int mBaudrate=115200;	//set the default baud rate to 115200
 	private String mPassword="AT+PASSWOR=DFRobot\r\n";
 	
@@ -279,6 +277,7 @@ public abstract  class BlunoLibrary  extends BaseActivity {
 	
     public void buttonScanOnClickProcess()
     {
+        Log.i(TAG, "connection : buttonScanOnClickProcess");
     	switch (mConnectionState) {
 		case isNull:
 			mConnectionState=connectionStateEnum.isScanning;
@@ -298,12 +297,7 @@ public abstract  class BlunoLibrary  extends BaseActivity {
 			
 			break;
 		case isConnected:
-			mBluetoothLeService.disconnect();
-            mHandler.postDelayed(mDisonnectingOverTimeRunnable, 10000);
 
-//			mBluetoothLeService.close();
-			mConnectionState=connectionStateEnum.isDisconnecting;
-			onConectionStateChange(mConnectionState);
 			break;
 		case isDisconnecting:
 			
@@ -367,7 +361,7 @@ public abstract  class BlunoLibrary  extends BaseActivity {
 			((Activity) mainContext).runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Log.i(TAG, "mLeScanCallback onLeScan run ");
+					Log.i(TAG, "mLeScanCallback onLeSca run ");
                     if (device == null) {
                         Log.e(TAG, "device == null");
                         return;

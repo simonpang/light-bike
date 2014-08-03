@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.example.lightbike.R;
+import com.example.lightbike.app.BikeApplication;
 import com.example.lightbike.qrcode.MipcaActivityCapture;
 
 public class DashboardActivity extends BaseActivity {
@@ -19,7 +20,9 @@ public class DashboardActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dashboard);
-		
+
+        ((BikeApplication)getApplication()).init(this);
+
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
 		scanQRButton = (Button) findViewById(R.id.scanQRButton);
 		
@@ -69,6 +72,7 @@ public class DashboardActivity extends BaseActivity {
         if (qrFlag) {
             scanQRButton.setText("单车控制");
         }
+        ((BikeApplication)getApplication()).tryConnect();
     }
 
     @Override
