@@ -5,5 +5,5 @@
       <color name="viewfinder_mask">#60000000</color>
       <color name="possible_result_points">#c0ffff00</color> 
        <color name="qrcode_view">#3c3c3c</color>
-      
+       <color name="map_view">#eee</color>
 </resources>
