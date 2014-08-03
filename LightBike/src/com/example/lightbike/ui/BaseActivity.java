@@ -20,6 +20,8 @@ public class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getActionBar();
+        if (actionBar == null)
+        	return;
         //actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_background));
 //        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.background_green));

@@ -85,11 +85,7 @@
 
         <activity
             android:name="com.example.lightbike.ui.DashboardActivity">
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+          
         </activity>
         
         <activity android:name="com.example.lightbike.ui.MainActivity"/>
@@ -107,6 +103,23 @@
         
          <activity
             android:name="com.example.lightbike.ui.QRCodeUI"
+            android:theme="@android:style/Theme.NoTitleBar"
+            >
+        </activity>
+        
+         <activity
+            android:name="com.example.lightbike.ui.LoginUI"
+            android:theme="@android:style/Theme.NoTitleBar"
+            >
+            
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name="com.example.lightbike.ui.ProfileUI"
             android:theme="@android:style/Theme.NoTitleBar"
             >
         </activity>
