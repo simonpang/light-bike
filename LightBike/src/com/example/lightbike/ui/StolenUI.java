@@ -54,21 +54,6 @@ public class StolenUI extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     public void setFree() {
         ((BikeApplication)getApplication()).sendCommand("F");
     }
