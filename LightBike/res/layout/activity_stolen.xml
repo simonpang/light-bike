@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/stolen_screen"
+        >
+
+
+    <ImageView
+            android:layout_width="173dp"
+            android:layout_height="212dp"
+            android:id="@+id/button" android:layout_gravity="left|center_vertical"/>
+    <ImageView
+            android:layout_width="162dp"
+            android:layout_height="209dp"
+            android:id="@+id/button2" android:layout_gravity="right|center_vertical"/>
+</FrameLayout>

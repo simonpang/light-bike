@@ -54,8 +54,8 @@ public class BluetoothUI  extends BlunoLibrary {
             }
         });
 	}
-	
-	
+
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		onActivityResultProcess(requestCode, resultCode, data);					//onActivityResult Process by BlunoLibrary
@@ -65,7 +65,8 @@ public class BluetoothUI  extends BlunoLibrary {
     @Override
     protected void onPause() {
         super.onPause();
-        onPauseProcess();														//onPause Process by BlunoLibrary
+        onPauseProcess();
+        finish();
     }
 	
 	protected void onStop() {
@@ -108,7 +109,7 @@ public class BluetoothUI  extends BlunoLibrary {
 		//The Serial data from the BLUNO may be sub-packaged, so using a buffer to hold the String is a good choice.
         if (theString.equals("S")) {
             Intent intent = new Intent();
-            intent.setClass(BluetoothUI.this, StolenUI.class);
+            intent.setClass(BluetoothUI.this, EmptyUI.class);
             startActivity(intent);
         }
 	}
