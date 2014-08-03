@@ -69,10 +69,11 @@ public class MipcaActivityCapture extends BaseActivity implements Callback {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-			finish();
+			
 			Intent intent1 = new Intent();
 	        intent1.setClass(MipcaActivityCapture.this, BluetoothUI.class);
 	        startActivity(intent1);
+	        finish();
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
