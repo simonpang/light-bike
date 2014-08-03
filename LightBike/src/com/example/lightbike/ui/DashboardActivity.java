@@ -93,4 +93,10 @@ public class DashboardActivity extends BaseActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ((BikeApplication)getApplication()).bleClose();
+    }
 }

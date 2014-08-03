@@ -71,4 +71,10 @@ public class BikeApplication extends BlunoLibrary {
         onCreateProcess();
         onResumeProcess();
     }
+
+    public void bleClose() {
+        onPauseProcess();
+        onStopProcess();
+        onDestroyProcess();
+    }
 }
