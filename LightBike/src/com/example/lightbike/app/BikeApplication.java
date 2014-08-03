@@ -6,6 +6,7 @@ import android.util.Log;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.lightbike.ble.BlunoLibrary;
 import com.example.lightbike.ui.EmptyUI;
+import com.example.lightbike.ui.StolenUI;
 
 import java.util.logging.Handler;
 
@@ -51,7 +52,7 @@ public class BikeApplication extends BlunoLibrary {
         if (theString.equals("S")) {
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setClass(this, EmptyUI.class);
+            intent.setClass(this, StolenUI.class);
             startActivity(intent);
         }
     }
