@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
             <!-- Declare this required feature if you want to make the app available to BLE-capable
@@ -97,7 +97,6 @@
         <activity
             android:name="com.example.lightbike.ui.LocationUI"
             android:configChanges="orientation|keyboardHidden"
-            android:label="map"
             android:screenOrientation="sensor" >
         </activity>
         

@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background_green" 
-    android:orientation="vertical">
+    android:background="@drawable/background_green"
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/imageview1"
@@ -11,34 +11,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_litebike"
-        />
+        android:src="@drawable/logo_litebike" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageview2"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/button_bike_light" />
+
+        <ImageView
+            android:id="@+id/number"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:src="@drawable/bike_no" />
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageview2"
-        android:layout_marginTop="60dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/button_bike_light"
-         />
-    
-    <ImageView
         android:id="@+id/imageview3"
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/button_bike_blue"
         android:layout_gravity="center_horizontal"
-         />
+        android:layout_marginTop="30dp"
+        android:src="@drawable/bike_info" />
 
     <ImageButton
         android:id="@+id/button"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/icon_qrscan"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_green"
-       />
+        android:src="@drawable/button_unlock_text" />
+
 </LinearLayout>
