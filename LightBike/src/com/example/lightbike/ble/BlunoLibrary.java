@@ -90,7 +90,9 @@ public abstract  class BlunoLibrary  extends BaseActivity {
         	if(mConnectionState==connectionStateEnum.isConnecting)
 			mConnectionState=connectionStateEnum.isToScan;
 			onConectionStateChange(mConnectionState);
-			mBluetoothLeService.close();
+            if (mBluetoothLeService != null) {
+                mBluetoothLeService.close();
+            }
 		}};
 		
     private Runnable mDisonnectingOverTimeRunnable=new Runnable(){
@@ -100,7 +102,9 @@ public abstract  class BlunoLibrary  extends BaseActivity {
         	if(mConnectionState==connectionStateEnum.isDisconnecting)
 			mConnectionState=connectionStateEnum.isToScan;
 			onConectionStateChange(mConnectionState);
-			mBluetoothLeService.close();
+            if (mBluetoothLeService != null) {
+                mBluetoothLeService.close();
+            }
 		}};
     
 	public static final String SerialPortUUID="0000dfb1-0000-1000-8000-00805f9b34fb";
