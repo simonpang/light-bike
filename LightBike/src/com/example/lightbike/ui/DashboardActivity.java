@@ -13,13 +13,15 @@ import com.example.lightbike.qrcode.MipcaActivityCapture;
 
 public class DashboardActivity extends BaseActivity {
 
+    private boolean qrFlag = false;
+    private Button scanQRButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dashboard);
 		
 		Button viewMapButton = (Button) findViewById(R.id.viewMapButton);
-		Button scanQRButton = (Button) findViewById(R.id.scanQRButton);
+		scanQRButton = (Button) findViewById(R.id.scanQRButton);
 		
 		viewMapButton.setOnClickListener(new OnClickListener() {
 			
@@ -35,13 +37,20 @@ public class DashboardActivity extends BaseActivity {
 			
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(DashboardActivity.this, MipcaActivityCapture.class);
-				startActivity(intent);
+                if (!qrFlag) {
+                    Intent intent = new Intent(DashboardActivity.this, MipcaActivityCapture.class);
+                    startActivity(intent);
+                    qrFlag = true;
+                } else {
+                    Intent intent = new Intent();
+                    intent.setClass(DashboardActivity.this, BluetoothUI.class);
+                    startActivity(intent);
+                }
 			}
 		});
 		
 		Button btnBluetooth = (Button) findViewById(R.id.btn_bluetooth);
-		
+		btnBluetooth.setVisibility(View.INVISIBLE);
 		btnBluetooth.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -54,7 +63,15 @@ public class DashboardActivity extends BaseActivity {
 
 	}
 
-	@Override
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (qrFlag) {
+            scanQRButton.setText("连接单车");
+        }
+    }
+
+    @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.dashboard, menu);
