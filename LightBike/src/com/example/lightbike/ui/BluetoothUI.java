@@ -1,28 +1,19 @@
 package com.example.lightbike.ui;
 
-import java.io.File;
-
-import android.content.ComponentName;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.lightbike.R;
 import com.example.lightbike.ble.BlunoLibrary;
-import com.example.lightbike.ble.BlunoLibrary.connectionStateEnum;
 
 
 public class BluetoothUI  extends BlunoLibrary {
-	private Button buttonScan;
-	private Button buttonSerialSend;
-	private EditText serialSendText;
-	private TextView serialReceivedText;
-	
+	private TextView statusText;
+	private Button lockBtn;
+    private Button unlockBtn;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,31 +23,29 @@ public class BluetoothUI  extends BlunoLibrary {
         
         serialBegin(115200);													//set the Uart Baudrate on BLE chip to 115200
 		
-        serialReceivedText=(TextView) findViewById(R.id.serialReveicedText);	//initial the EditText of the received data
-        serialSendText=(EditText) findViewById(R.id.serialSendText);			//initial the EditText of the sending data
-        
-        buttonSerialSend = (Button) findViewById(R.id.buttonSerialSend);		//initial the button for sending the data
-        buttonSerialSend.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
+        lockBtn = (Button) findViewById(R.id.lock_btn);
+        lockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                serialSend("L");
+            }
+        });
 
-				serialSend(serialSendText.getText().toString());				//send the data to the BLUNO
-			}
-		});
-        
-        buttonScan = (Button) findViewById(R.id.buttonScan);					//initial the button for scanning the BLE device
-        buttonScan.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				buttonScanOnClickProcess();										//Alert Dialog for selecting the BLE device
-			}
-		});
-	}
+        unlockBtn = (Button) findViewById(R.id.unlock_btn);
+        unlockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                serialSend("U");
+            }
+        });
+        statusText = (TextView) findViewById(R.id.tv_status);
+        statusText.post(new Runnable() {
+            @Override
+            public void run() {
+                buttonScanOnClickProcess();                                        //Alert Dialog for selecting the BLE device
+            }
+        });
+    }
 
 	protected void onResume(){
 		super.onResume();
@@ -92,19 +81,19 @@ public class BluetoothUI  extends BlunoLibrary {
 	public void onConectionStateChange(connectionStateEnum theConnectionState) {//Once connection state changes, this function will be called
 		switch (theConnectionState) {											//Four connection state
 		case isConnected:
-			buttonScan.setText("Connected");
+			statusText.setText("Connected");
 			break;
 		case isConnecting:
-			buttonScan.setText("Connecting");
+			statusText.setText("Connecting");
 			break;
 		case isToScan:
-			buttonScan.setText("Scan");
+			statusText.setText("Scan");
 			break;
 		case isScanning:
-			buttonScan.setText("Scanning");
+			statusText.setText("Scanning");
 			break;
 		case isDisconnecting:
-			buttonScan.setText("isDisconnecting");
+			statusText.setText("isDisconnecting");
 			break;
 		default:
 			break;
@@ -114,7 +103,7 @@ public class BluetoothUI  extends BlunoLibrary {
 	@Override
 	public void onSerialReceived(String theString) {							//Once connection data received, this function will be called
 		// TODO Auto-generated method stub
-		serialReceivedText.append(theString);							//append the text into the EditText
+		//serialReceivedText.append(theString);							//append the text into the EditText
 		//The Serial data from the BLUNO may be sub-packaged, so using a buffer to hold the String is a good choice.
 					
 	}

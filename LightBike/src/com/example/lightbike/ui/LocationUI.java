@@ -1,5 +1,6 @@
 package com.example.lightbike.ui;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -162,19 +163,22 @@ public class LocationUI extends BaseActivity {
              */
             public boolean onMarkerClick(Marker marker){
                 Log.i(TAG, "onMarkerClick");
-                Button button = new Button(getApplicationContext());
-                button.setBackgroundResource(R.drawable.popup);
-                final LatLng ll = marker.getPosition();
-                Point p = mBaiduMap.getProjection().toScreenLocation(ll);
-                p.y -= 47;
-                LatLng llInfo = mBaiduMap.getProjection().fromScreenLocation(p);
-                mInfoWindow = new InfoWindow(button, llInfo, new InfoWindow.OnInfoWindowClickListener() {
-                    @Override
-                    public void onInfoWindowClick() {
-                        mBaiduMap.hideInfoWindow();
-                    }
-                });
-                mBaiduMap.showInfoWindow(mInfoWindow);
+//                Button button = new Button(getApplicationContext());
+//                button.setBackgroundResource(R.drawable.popup);
+//                final LatLng ll = marker.getPosition();
+//                Point p = mBaiduMap.getProjection().toScreenLocation(ll);
+//                p.y -= 47;
+//                LatLng llInfo = mBaiduMap.getProjection().fromScreenLocation(p);
+//                mInfoWindow = new InfoWindow(button, llInfo, new InfoWindow.OnInfoWindowClickListener() {
+//                    @Override
+//                    public void onInfoWindowClick() {
+//                        mBaiduMap.hideInfoWindow();
+//                    }
+//                });
+//                mBaiduMap.showInfoWindow(mInfoWindow);
+                Intent intent = new Intent();
+                intent.setClass(LocationUI.this, StationUI.class);
+                startActivity(intent);
                 return true;
             }
         };
