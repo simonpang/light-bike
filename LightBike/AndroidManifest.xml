@@ -149,6 +149,7 @@
 
         <activity
                 android:name="com.example.lightbike.ui.StolenUI"
+                android:launchMode="singleTop"
                 android:theme="@android:style/Theme.NoTitleBar"
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait"
