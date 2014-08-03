@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:background="@drawable/button_green"
+        android:background="@drawable/btn_green"
         android:src="@drawable/button_unlock_text" />
 
     <Button
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_green"
+            android:background="@drawable/btn_green"
             android:text="上锁"
             android:textColor="#ffffffff"/>
 
