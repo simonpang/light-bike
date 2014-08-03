@@ -45,7 +45,7 @@
         android:src="@drawable/bike_info" />
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/unlock_button"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -53,4 +53,19 @@
         android:background="@drawable/button_green"
         android:src="@drawable/button_unlock_text" />
 
+    <Button
+            android:id="@+id/lock_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_green"
+            android:text="上锁"
+            android:textColor="#ffffffff"/>
+
+    <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
 </LinearLayout>

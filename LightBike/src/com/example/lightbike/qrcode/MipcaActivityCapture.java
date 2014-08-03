@@ -26,6 +26,7 @@ import com.example.lightbike.qrcode.zxing.decoding.CaptureActivityHandler;
 import com.example.lightbike.qrcode.zxing.decoding.InactivityTimer;
 import com.example.lightbike.qrcode.zxing.view.ViewfinderView;
 import com.example.lightbike.ui.BaseActivity;
+import com.example.lightbike.ui.BluetoothUI;
 import com.example.lightbike.ui.QRCodeUI;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -70,7 +71,7 @@ public class MipcaActivityCapture extends BaseActivity implements Callback {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			finish();
 			Intent intent1 = new Intent();
-	        intent1.setClass(MipcaActivityCapture.this, QRCodeUI.class);
+	        intent1.setClass(MipcaActivityCapture.this, BluetoothUI.class);
 	        startActivity(intent1);
 			return true;
 		}
