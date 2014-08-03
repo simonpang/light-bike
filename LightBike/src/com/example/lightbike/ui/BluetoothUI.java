@@ -103,9 +103,12 @@ public class BluetoothUI  extends BlunoLibrary {
 
 	@Override
 	public void onSerialReceived(String theString) {							//Once connection data received, this function will be called
-		// TODO Auto-generated method stub
 		//serialReceivedText.append(theString);							//append the text into the EditText
 		//The Serial data from the BLUNO may be sub-packaged, so using a buffer to hold the String is a good choice.
-					
+        if (theString.equals("S")) {
+            Intent intent = new Intent();
+            intent.setClass(BluetoothUI.this, StolenUI.class);
+            startActivity(intent);
+        }
 	}
 }
